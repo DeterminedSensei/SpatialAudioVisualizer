@@ -1,0 +1,21 @@
+
+<Window x:Class="SpatialAudioRadar.OverlayWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SpatialAudioRadar"
+    WindowStyle="None"
+    AllowsTransparency="True"
+    Background="Transparent"
+    Topmost="True"
+    ShowInTaskbar="False"
+    ResizeMode="NoResize"
+    Width="320"
+    Height="320"
+    WindowStartupLocation="CenterScreen">
+
+    <Grid Background="Transparent">
+        <local:RadarSurface
+            x:Name="Radar"
+            MouseLeftButtonDown="Radar_MouseLeftButtonDown"/>
+    </Grid>
+</Window>

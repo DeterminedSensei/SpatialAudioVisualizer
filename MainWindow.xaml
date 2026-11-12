@@ -1,0 +1,156 @@
+
+<Window x:Class="SpatialAudioRadar.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Spatial Audio Radar"
+    Width="540"
+    Height="590"
+    WindowStartupLocation="CenterScreen"
+    Background="#101820"
+    Foreground="#F1F5F9"
+    FontFamily="Segoe UI"
+    FontSize="14">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#29465B"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Padding" Value="12,9"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="BorderBrush" Value="#66839B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F1F5F9"/>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#24384A"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#087EAE"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#155E75"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="24">
+
+        <TextBlock
+            Text="SPATIAL AUDIO RADAR"
+            FontSize="25"
+            FontWeight="Bold"
+            Foreground="#67D8FF"/>
+
+        <TextBlock
+            Text="Real-time directional audio visualization"
+            Foreground="#D1DFEA"
+            Margin="0,4,0,24"/>
+
+        <Border Background="#1C2A38"
+                CornerRadius="10"
+                Padding="16"
+                Margin="0,0,0,14">
+
+            <StackPanel>
+                <TextBlock Text="AUDIO SOURCE"
+                           FontWeight="Bold"
+                           FontSize="14"/>
+
+                <ComboBox
+                    x:Name="SourceBox"
+                    Height="40"
+                    Margin="0,12,0,8"
+                    Background="#24384A"
+                    Foreground="#FFFFFF"
+                    BorderBrush="#7890A5"
+                    BorderThickness="1"/>
+
+                <Button
+                    Content="Refresh application list"
+                    HorizontalAlignment="Left"
+                    Click="Refresh_Click"/>
+
+                <TextBlock
+                    x:Name="StatusText"
+                    Text="Status: Stopped"
+                    Foreground="#D1DFEA"
+                    Margin="0,12,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <Border Background="#1C2A38"
+                CornerRadius="10"
+                Padding="16"
+                Margin="0,0,0,14">
+
+            <StackPanel>
+                <TextBlock Text="RADAR SETTINGS"
+                           FontWeight="Bold"
+                           FontSize="14"/>
+
+                <TextBlock
+                    Text="Audio sensitivity"
+                    Margin="0,16,0,4"/>
+
+                <Slider
+                    x:Name="SensitivitySlider"
+                    Minimum="1"
+                    Maximum="10"
+                    Value="3"
+                    ValueChanged="Sensitivity_Changed"/>
+
+                <TextBlock
+                    Text="Overlay size"
+                    Margin="0,16,0,4"/>
+
+                <Slider
+                    x:Name="SizeSlider"
+                    Minimum="180"
+                    Maximum="600"
+                    Value="320"
+                    ValueChanged="Size_Changed"/>
+
+                <CheckBox
+                    x:Name="OverlayEnabled"
+                    Content="Enable floating overlay"
+                    IsChecked="True"
+                    Foreground="#F1F5F9"
+                    Margin="0,18,0,4"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0,12">
+
+            <Button
+                Content="START MONITORING"
+                Background="#087EAE"
+                Padding="20,12"
+                Click="Start_Click"/>
+
+            <Button
+                Content="STOP"
+                Background="#9D3434"
+                Padding="20,12"
+                Click="Stop_Click"/>
+        </StackPanel>
+
+        <TextBlock
+            Text="Stereo and multichannel audio analysis"
+            Foreground="#C5D3DF"
+            HorizontalAlignment="Center"
+            Margin="0,14,0,0"/>
+
+    </StackPanel>
+    </ScrollViewer>
+</Window>
